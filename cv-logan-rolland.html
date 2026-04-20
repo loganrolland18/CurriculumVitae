@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV – Logan Rolland – Développeur Full Stack Web & Web Mobile</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:           #f4f2ee;
+  --surface:      #ffffff;
+  --sidebar:      #edeae3;
+  --text:         #19181c;
+  --muted:        #7a756e;
+  --border:       #dedad3;
+  --accent:       #c05828;
+  --accent-bg:    #fdf1eb;
+  --accent-border:#e8a882;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding: 2.5rem 1rem;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--surface);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07), 0 12px 40px rgba(0,0,0,0.06);
+}
+
+/* ─── HEADER ─── */
+.header {
+  padding: 2.6rem 3rem 2.2rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.header-left {}
+
+.name {
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  line-height: 1;
+}
+.name em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.headline {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-top: 0.55rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.38rem;
+  align-items: flex-end;
+}
+
+.hc {
+  display: flex;
+  align-items: center;
+  gap: 0.42rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.15s;
+}
+.hc:hover { color: var(--accent); }
+.hc svg { flex-shrink: 0; }
+
+/* ─── LAYOUT ─── */
+.body {
+  display: grid;
+  grid-template-columns: 252px 1fr;
+}
+
+/* ─── SIDEBAR ─── */
+.sidebar {
+  background: var(--sidebar);
+  border-right: 1px solid var(--border);
+  padding: 2.2rem 1.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ─── MAIN ─── */
+.main {
+  padding: 2.2rem 2.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ─── SECTION TITLE ─── */
+.st {
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1.5px solid var(--accent-bg);
+}
+
+/* ─── SKILL GROUPS ─── */
+.skill-group {
+  margin-bottom: 0.9rem;
+}
+.skill-group:last-child { margin-bottom: 0; }
+
+.skill-group-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.45rem;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.stag {
+  font-size: 0.77rem;
+  font-weight: 500;
+  padding: 0.22rem 0.65rem;
+  border-radius: 3px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  letter-spacing: 0.01em;
+}
+.stag.hi {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ─── SOFT LIST ─── */
+.soft-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.42rem;
+}
+.soft-item {
+  font-size: 0.83rem;
+  color: var(--text);
+  font-weight: 400;
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.4;
+}
+.soft-item::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.68rem;
+  top: 0.15em;
+}
+
+/* ─── LANG ─── */
+.lang-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.83rem;
+  margin-bottom: 0.38rem;
+}
+.lbadge {
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 0.1rem 0.5rem;
+  border-radius: 2px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+/* ─── HOBBIES ─── */
+.hobby-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.htag {
+  font-size: 0.74rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: 3px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+/* ─── DISPO ─── */
+.dispo {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.75;
+}
+.dispo strong {
+  display: block;
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.84rem;
+  margin-bottom: 0.15rem;
+}
+
+/* ─── PROFIL ─── */
+.profil {
+  font-size: 0.87rem;
+  line-height: 1.8;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* ─── CARDS ─── */
+.card {
+  padding-bottom: 1.4rem;
+  margin-bottom: 1.4rem;
+  border-bottom: 1px solid var(--border);
+}
+.card:last-child {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.2rem;
+}
+.card-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+}
+.card-date {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  padding: 0.12rem 0.5rem;
+  border-radius: 3px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+.card-sub {
+  font-size: 0.79rem;
+  color: var(--muted);
+  margin-bottom: 0.65rem;
+  font-weight: 400;
+}
+.card-desc {
+  font-size: 0.83rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.card-desc ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  padding: 0;
+}
+.card-desc li {
+  list-style: none;
+  position: relative;
+  padding-left: 1rem;
+}
+.card-desc li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.68rem;
+  top: 0.2em;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.75rem;
+}
+.tag {
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.16rem 0.52rem;
+  border-radius: 3px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  letter-spacing: 0.01em;
+}
+
+/* ─── PRINT ─── */
+@media print {
+  body { padding: 0; background: white; }
+  .page { box-shadow: none; border-radius: 0; max-width: 100%; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-left">
+      <div class="name">Logan <em>Rolland</em></div>
+      <div class="headline">Développeur Full Stack Web &amp; Web Mobile</div>
+    </div>
+    <div class="contacts">
+      <a class="hc" href="tel:0695582307">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72c.127.96.36 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.24a16 16 0 0 0 6 6l1.62-1.62a2 2 0 0 1 2.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        06.95.58.23.07
+      </a>
+      <a class="hc" href="mailto:logan.rolland18@gmail.com">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        logan.rolland18@gmail.com
+      </a>
+      <span class="hc">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        Sedan — Ardennes (08)
+      </span>
+      <a class="hc" href="https://github.com/loganrolland18" target="_blank">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        github.com/loganrolland18
+      </a>
+      <span class="hc">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Permis B en cours
+      </span>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <section>
+        <div class="st">Compétences</div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Maîtrisé</div>
+          <div class="skill-tags">
+            <span class="stag hi">HTML5 / CSS3</span>
+            <span class="stag hi">PHP 8.2</span>
+            <span class="stag hi">MySQL / SQL</span>
+            <span class="stag hi">JavaScript</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Pratiqué</div>
+          <div class="skill-tags">
+            <span class="stag">Git / GitHub</span>
+            <span class="stag">API REST</span>
+            <span class="stag">AJAX</span>
+            <span class="stag">Python</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">En apprentissage</div>
+          <div class="skill-tags">
+            <span class="stag">Symfony</span>
+            <span class="stag">PrestaShop</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="st">Savoir-faire</div>
+        <div class="soft-list">
+          <div class="soft-item">Développement full stack</div>
+          <div class="soft-item">PHP orienté objet (POO)</div>
+          <div class="soft-item">Architecture MVC</div>
+          <div class="soft-item">Sécurité web (OWASP)</div>
+          <div class="soft-item">API REST / AJAX</div>
+          <div class="soft-item">Responsive design</div>
+          <div class="soft-item">Gestion de BDD</div>
+          <div class="soft-item">Documentation technique</div>
+        </div>
+      </section>
+
+      <section>
+        <div class="st">Qualités</div>
+        <div class="soft-list">
+          <div class="soft-item">Autonome &amp; rigoureux</div>
+          <div class="soft-item">Curieux, esprit d'analyse</div>
+          <div class="soft-item">Force de proposition</div>
+          <div class="soft-item">Esprit d'équipe</div>
+        </div>
+      </section>
+
+      <section>
+        <div class="st">Langues</div>
+        <div class="lang-row"><span>Français</span><span class="lbadge">Natif</span></div>
+        <div class="lang-row"><span>Anglais</span><span class="lbadge">B1</span></div>
+      </section>
+
+      <section>
+        <div class="st">Centres d'intérêt</div>
+        <div class="hobby-tags">
+          <span class="htag">Programmation</span>
+          <span class="htag">Modélisation 3D</span>
+          <span class="htag">Impression 3D</span>
+          <span class="htag">Rétro-gaming</span>
+        </div>
+      </section>
+
+      <section>
+        <div class="st">Disponibilité</div>
+        <div class="dispo">
+          <strong>Alternance — Licence / Master</strong>
+          Dès que possible<br>
+          (septembre 2026 au plus tard)<br>
+              
+        </div>
+      </section>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <section>
+        <div class="st">Profil</div>
+        <div class="profil">
+          Titulaire du titre professionnel Développeur Web et Web Mobile (RNCP niv. 5), je recherche une alternance pour préparer un Master en développement web. J'ai mené de bout en bout un projet web full stack complet — PHP 8.2 en POO, MySQL, JavaScript, API REST, incluant un module e-commerce (panier, catalogue, gestion des stocks) — sans framework imposé. Rigoureux sur la qualité du code, la sécurité et la documentation, je suis à l'aise autant sur la logique back-end que sur l'intégration front-end.
+        </div>
+      </section>
+
+      <section>
+        <div class="st">Formation</div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Titre Pro DWWM — Développeur Web et Web Mobile</div>
+            <span class="card-date">2024 – 2025</span>
+          </div>
+          <div class="card-sub">Titre RNCP Niveau 5 (équivalent Bac+2)</div>
+          <div class="card-desc">
+            Développement front-end et back-end, conception et gestion de bases de données, sécurisation d'applications web (OWASP, CSRF, injections SQL), responsive design, architecture MVC, versioning Git.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Baccalauréat Général</div>
+            <span class="card-date">2020 – 2023</span>
+          </div>
+          <div class="card-sub">Spécialités Mathématiques &amp; NSI (Numérique et Sciences Informatiques)</div>
+          <div class="card-desc">
+            Option Sciences de l'Ingénieur en première. Cordées de la réussite de la 3ème à la terminale.
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="st">Expérience professionnelle</div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Développeur Full Stack Web </div>
+            <span class="card-date">Un mois</span>
+          </div>
+          <div class="card-sub">Stage — Sedan (08)</div>
+          <div class="card-desc">
+            <ul>
+              <li>Développement et maintenance d'applications web (front-end &amp; back-end)</li>
+              <li>Intégration et gestion de bases de données MySQL</li>
+              <li>Mise en place de bonnes pratiques de sécurité</li>
+              <li>Travail en autonomie sur plusieurs projets simultanés</li>
+            </ul>
+          </div>
+          <div class="tags">
+            <span class="tag">HTML/CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">PHP 8.2</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Git</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="st">Projets</div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Rosëlys — Plateforme collaborative avec module e-commerce</div>
+            <span class="card-date">2024 – 2025</span>
+          </div>
+          <div class="card-sub">Projet de certification DWWM — développé sans framework</div>
+          <div class="card-desc">
+            <ul>
+              <li>Boutique en ligne intégrée : catalogue produits, panier dynamique (AJAX), gestion des stocks, commandes — logique e-commerce fonctionnelle de bout en bout</li>
+              <li>Back-end PHP 8.2 avec PDO, architecture MVC, requêtes SQL optimisées</li>
+              <li>Sécurité renforcée : tokens CSRF, protection XSS, rate limiting, soft delete, anonymisation</li>
+              <li>Plateforme complète : posts, modération, thèmes dynamiques, panel d'administration</li>
+              <li>Dossier technique de 49 pages et soutenance orale devant jury professionnel</li>
+            </ul>
+          </div>
+          <div class="tags">
+            <span class="tag">PHP 8.2 POO</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">AJAX</span>
+            <span class="tag">HTML5/CSS3</span>
+            <span class="tag">PDO</span>
+            <span class="tag">MVC</span>
+            <span class="tag">CSRF</span>
+            <span class="tag">Git</span>
+            <span class="tag">API REST</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

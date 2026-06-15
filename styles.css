@@ -496,67 +496,90 @@ body {
 /* ─── RESPONSIVE MOBILE ─── */
 @media (max-width: 768px) {
   body {
-    padding: 0;
-    font-size: 14px;
+    padding: 1rem 0.5rem;
+    font-size: 13.5px;
+    background: var(--bg);
   }
 
   .page {
-    border-radius: 0;
-    box-shadow: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    overflow: hidden;
   }
 
-  /* Header : empilé verticalement */
+  /* Header : identité + contacts empilés, style conservé */
   .header {
     flex-direction: column;
-    padding: 1.6rem 1.2rem 1.4rem;
-    gap: 1.2rem;
+    padding: 1.5rem 1.3rem 1.2rem;
+    gap: 1rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
   }
 
-  .header-identity {
-    gap: 1rem;
-  }
+  .header-identity { gap: 0.9rem; }
 
   .avatar {
-    width: 52px;
-    height: 52px;
-    font-size: 0.95rem;
+    width: 50px;
+    height: 50px;
+    font-size: 0.9rem;
   }
 
-  .name {
-    font-size: 1.9rem;
-  }
+  .name { font-size: 1.75rem; }
+  .headline { font-size: 0.75rem; margin-top: 0.4rem; }
+  .headline-sub { font-size: 0.72rem; margin-top: 0.25rem; }
 
-  /* Contacts alignés à gauche sur mobile */
+  /* Contacts : grille 2 colonnes, alignés à gauche */
   .contacts {
     align-items: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 0.5rem 1rem;
+    gap: 0.45rem 1.2rem;
   }
 
-  /* Layout : sidebar au-dessus du main */
-  .body {
-    grid-template-columns: 1fr;
-  }
+  /* Layout : sidebar au-dessus du main, les deux pleine largeur */
+  .body { grid-template-columns: 1fr; }
 
+  /* Sidebar : fond coloré conservé, sections en grille sur mobile */
   .sidebar {
     border-right: none;
-    border-bottom: 1px solid var(--border);
-    padding: 1.4rem 1.2rem;
-    gap: 1.4rem;
+    border-bottom: 2px solid var(--border);
+    padding: 1.3rem 1.3rem;
+    gap: 0;
+    /* Sections organisées en 2 colonnes sur mobile */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    column-gap: 1.2rem;
+    row-gap: 1.2rem;
   }
 
-  /* Compétences sur mobile : grille horizontale */
-  .skill-tags {
-    gap: 0.3rem;
+  /* Compétences prend toute la largeur */
+  .sidebar section:first-child {
+    grid-column: 1 / -1;
   }
 
+  .st { margin-bottom: 0.7rem; }
+
+  .skill-group { margin-bottom: 0.6rem; }
+  .skill-tags { gap: 0.28rem; }
+  .stag { font-size: 0.74rem; padding: 0.18rem 0.5rem; }
+
+  .soft-item { font-size: 0.8rem; }
+
+  .dispo { font-size: 0.79rem; line-height: 1.65; }
+
+  /* Main : padding ajusté */
   .main {
-    padding: 1.4rem 1.2rem;
-    gap: 1.4rem;
+    padding: 1.3rem 1.3rem;
+    gap: 1.5rem;
   }
 
-  /* Contact fab */
+  .profil { font-size: 0.84rem; line-height: 1.75; }
+
+  .card-title { font-size: 0.88rem; }
+  .card-desc { font-size: 0.8rem; }
+
+  /* Contact fab ajusté */
   .contact-fab {
     right: 0.75rem;
     bottom: 0.75rem;
@@ -577,7 +600,6 @@ body {
   .contact-panel-list a {
     transition: none !important;
   }
-
   .contact-panel-list a {
     opacity: 1;
     transform: none;
@@ -588,12 +610,14 @@ body {
 @media print {
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 
+  @page { margin: 0.6cm 0.7cm; size: A4 portrait; }
+
   body {
     padding: 0;
     margin: 0;
     background: white;
-    font-size: 11px;
-    line-height: 1.45;
+    font-size: 10.5px;
+    line-height: 1.4;
   }
 
   .page {
@@ -603,92 +627,79 @@ body {
     width: 100%;
   }
 
-  /* Masquer les éléments interactifs */
   .contact-fab,
   .contact-backdrop,
   .contact-panel { display: none !important; }
 
-  /* Header compact */
+  /* Header très compact */
   .header {
-    padding: 1rem 1.4rem 0.9rem;
-    gap: 1rem;
+    padding: 0.75rem 1.1rem 0.7rem;
+    gap: 0.8rem;
   }
 
-  .avatar {
-    width: 48px;
-    height: 48px;
-    font-size: 0.85rem;
-  }
+  .avatar { width: 44px; height: 44px; font-size: 0.78rem; }
+  .header-identity { gap: 0.85rem; }
 
-  .name { font-size: 1.7rem; }
-  .headline { font-size: 0.7rem; margin-top: 0.35rem; }
-  .headline-sub { font-size: 0.68rem; margin-top: 0.2rem; }
+  .name { font-size: 1.5rem; }
+  .headline { font-size: 0.66rem; margin-top: 0.28rem; letter-spacing: 0.09em; }
+  .headline-sub { font-size: 0.62rem; margin-top: 0.16rem; }
+  .hc { font-size: 0.67rem; gap: 0.32rem; }
 
-  .hc { font-size: 0.7rem; }
-
-  /* Layout deux colonnes conservé à l'impression */
-  .body {
-    grid-template-columns: 210px 1fr;
-  }
+  /* Layout 2 colonnes conservé */
+  .body { grid-template-columns: 195px 1fr; }
 
   .sidebar {
-    padding: 1rem 1.1rem;
-    gap: 1rem;
+    padding: 0.8rem 0.9rem;
+    gap: 0.75rem;
+    margin-right: -0.8rem;
   }
 
   .main {
-    padding: 1rem 1.4rem;
-    gap: 1rem;
+    padding: 0.8rem 1.1rem;
+    gap: 0.8rem;
   }
 
-  /* Titres de section plus compacts */
-  .st {
-    font-size: 0.58rem;
-    margin-bottom: 0.55rem;
-    padding-bottom: 0.3rem;
-  }
+  /* Titres sections */
+  .st { font-size: 0.56rem; margin-bottom: 0.45rem; padding-bottom: 0.25rem; }
 
-  /* Skill tags plus petits */
-  .stag {
-    font-size: 0.68rem;
-    padding: 0.15rem 0.45rem;
-  }
-
-  .skill-group { margin-bottom: 0.6rem; }
-  .skill-group-label { font-size: 0.6rem; margin-bottom: 0.3rem; }
+  /* Skills */
+  .stag { font-size: 0.64rem; padding: 0.12rem 0.38rem; }
+  .skill-group { margin-bottom: 0.5rem; }
+  .skill-group-label { font-size: 0.58rem; margin-bottom: 0.25rem; }
+  .skill-tags { gap: 0.22rem; }
 
   /* Soft list */
-  .soft-item { font-size: 0.73rem; }
+  .soft-list { gap: 0.28rem; }
+  .soft-item { font-size: 0.69rem; }
 
-  /* Dispo */
-  .dispo { font-size: 0.72rem; line-height: 1.55; }
-  .dispo strong { font-size: 0.74rem; }
+  /* Langues */
+  .lang-row { font-size: 0.69rem; margin-bottom: 0.25rem; }
+  .lbadge { font-size: 0.58rem; padding: 0.07rem 0.38rem; }
+
+  /* Hobbies */
+  .htag { font-size: 0.62rem; padding: 0.1rem 0.35rem; }
+  .hobby-tags { gap: 0.22rem; }
+
+  /* Dispo — plus compact, mobilité sur une ligne */
+  .dispo { font-size: 0.67rem; line-height: 1.5; }
+  .dispo strong { font-size: 0.69rem; margin-bottom: 0.08rem; }
 
   /* Profil */
-  .profil { font-size: 0.77rem; line-height: 1.6; }
+  .profil { font-size: 0.73rem; line-height: 1.55; }
 
   /* Cards */
-  .card {
-    padding-bottom: 0.8rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .card-title { font-size: 0.82rem; }
-  .card-date { font-size: 0.65rem; }
-  .card-sub { font-size: 0.7rem; margin-bottom: 0.4rem; }
-  .card-desc { font-size: 0.73rem; line-height: 1.55; }
-  .card-desc ul { gap: 0.18rem; }
+  .card { padding-bottom: 0.65rem; margin-bottom: 0.65rem; }
+  .card-head { margin-bottom: 0.12rem; gap: 0.6rem; }
+  .card-title { font-size: 0.78rem; }
+  .card-date { font-size: 0.62rem; padding: 0.08rem 0.38rem; }
+  .card-sub { font-size: 0.66rem; margin-bottom: 0.32rem; }
+  .card-desc { font-size: 0.69rem; line-height: 1.5; }
+  .card-desc ul { gap: 0.14rem; }
 
   /* Tags tech */
-  .tag { font-size: 0.62rem; padding: 0.1rem 0.38rem; }
-  .tags { margin-top: 0.45rem; gap: 0.2rem; }
+  .tag { font-size: 0.59rem; padding: 0.08rem 0.3rem; }
+  .tags { margin-top: 0.35rem; gap: 0.16rem; }
 
-  /* Hobbies & langues */
-  .htag { font-size: 0.66rem; padding: 0.12rem 0.4rem; }
-  .lang-row { font-size: 0.73rem; }
-  .lbadge { font-size: 0.6rem; }
-
-  /* Éviter les coupures de page dans les cards */
   .card { page-break-inside: avoid; break-inside: avoid; }
   section { page-break-inside: avoid; break-inside: avoid; }
 }

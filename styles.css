@@ -569,6 +569,22 @@ body {
   }
 }
 
+@media (max-width: 430px) {
+  /* Deux colonnes de ~150px hachent les listes en mots isoles sur un petit
+     telephone : une seule colonne redevient lisible. */
+  .sidebar {
+    grid-template-columns: 1fr;
+    row-gap: 1.4rem;
+  }
+  .sidebar section:first-child { grid-column: auto; }
+
+  .header { padding: 1.3rem 1.1rem 1.1rem; }
+  .sidebar, .main { padding-left: 1.1rem; padding-right: 1.1rem; }
+  .name { font-size: 1.6rem; }
+  .card-head { flex-direction: column; align-items: flex-start; gap: 0.35rem; }
+  .card-date { align-self: flex-start; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .contact-fab,
   .contact-panel,
@@ -585,21 +601,25 @@ body {
 @media print {
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 
-  @page { margin: 0.6cm 0.7cm; size: A4 portrait; }
+  @page { margin: 0.55cm 0.65cm; size: A4 portrait; }
+
+  html, body { background: #fff; }
 
   body {
     padding: 0;
     margin: 0;
-    background: white;
     font-size: 10.5px;
-    line-height: 1.4;
+    line-height: 1.42;
   }
 
+  /* overflow:hidden sur .page tronque le contenu au-dela de la premiere
+     feuille : il doit redevenir visible pour que le document pagine. */
   .page {
     box-shadow: none;
     border-radius: 0;
     max-width: 100%;
     width: 100%;
+    overflow: visible;
   }
 
   .contact-fab,
@@ -607,63 +627,105 @@ body {
   .contact-panel { display: none !important; }
 
   .header {
-    padding: 0.75rem 1.1rem 0.7rem;
+    padding: 0.7rem 1rem 0.65rem;
     gap: 0.8rem;
+    break-inside: avoid;
+    break-after: avoid;
   }
 
-  .avatar { width: 44px; height: 44px; font-size: 0.78rem; }
-  .header-identity { gap: 0.85rem; }
+  .avatar { width: 42px; height: 42px; font-size: 0.74rem; }
+  .header-identity { gap: 0.8rem; }
 
-  .name { font-size: 1.5rem; }
-  .headline { font-size: 0.66rem; margin-top: 0.28rem; letter-spacing: 0.09em; }
-  .headline-sub { font-size: 0.62rem; margin-top: 0.16rem; }
-  .hc { font-size: 0.67rem; gap: 0.32rem; }
+  .name { font-size: 1.45rem; }
+  .headline { font-size: 0.64rem; margin-top: 0.26rem; letter-spacing: 0.09em; }
+  .headline-sub { font-size: 0.6rem; margin-top: 0.15rem; }
+  .hc { font-size: 0.65rem; gap: 0.3rem; }
 
-  .body { grid-template-columns: 195px 1fr; }
+  /* Deux colonnes cote a cote ne se paginent pas proprement : des qu'un CV
+     depasse une feuille, Chrome fragmente mal la grille et laisse de grands
+     vides dans la colonne etroite. A l'impression, le document redevient donc
+     un flux vertical : bandeau de competences, puis le corps. */
+  .body {
+    display: block;
+    grid-template-columns: none;
+  }
 
   .sidebar {
-    padding: 0.8rem 0.9rem;
-    gap: 0.75rem;
-    margin-right: -0.8rem;
+    display: block;
+    columns: 3;
+    column-gap: 1.1rem;
+    padding: 0.7rem 1rem;
+    margin-right: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    break-inside: auto;
   }
+
+  .sidebar section {
+    break-inside: avoid;
+    margin-bottom: 0.7rem;
+  }
+
+  /* Les puces sont des ::before positionnes en absolu. Dans un conteneur
+     multi-colonnes, une puce se detache de sa ligne et part en tete de la
+     colonne suivante, ou disparait. Dans le bandeau, la puce redevient donc
+     un marqueur en flux : plus rien a detacher. */
+  .sidebar .soft-item { padding-left: 0; position: static; }
+  .sidebar .soft-item::before {
+    position: static;
+    display: inline;
+    margin-right: 0.35rem;
+  }
+  .sidebar .soft-item,
+  .sidebar .lang-row,
+  .sidebar .skill-group,
+  .sidebar .hobby-tags { break-inside: avoid; }
+  .sidebar section:last-child { margin-bottom: 0; }
 
   .main {
-    padding: 0.8rem 1.1rem;
-    gap: 0.8rem;
+    display: block;
+    padding: 0.75rem 1rem;
   }
 
-  .st { font-size: 0.56rem; margin-bottom: 0.45rem; padding-bottom: 0.25rem; }
+  .main section { margin-bottom: 0.75rem; }
+  .main section:last-child { margin-bottom: 0; }
 
-  .stag { font-size: 0.64rem; padding: 0.12rem 0.38rem; }
-  .skill-group { margin-bottom: 0.5rem; }
-  .skill-group-label { font-size: 0.58rem; margin-bottom: 0.25rem; }
-  .skill-tags { gap: 0.22rem; }
+  .st { font-size: 0.55rem; margin-bottom: 0.4rem; padding-bottom: 0.22rem; break-after: avoid; }
 
-  .soft-list { gap: 0.28rem; }
-  .soft-item { font-size: 0.69rem; }
+  .stag { font-size: 0.62rem; padding: 0.1rem 0.34rem; }
+  .skill-group { margin-bottom: 0.45rem; }
+  .skill-group-label { font-size: 0.56rem; margin-bottom: 0.22rem; }
+  .skill-tags { gap: 0.2rem; }
 
-  .lang-row { font-size: 0.69rem; margin-bottom: 0.25rem; }
-  .lbadge { font-size: 0.58rem; padding: 0.07rem 0.38rem; }
+  .soft-list { gap: 0.24rem; }
+  .soft-item { font-size: 0.67rem; line-height: 1.3; }
 
-  .htag { font-size: 0.62rem; padding: 0.1rem 0.35rem; }
-  .hobby-tags { gap: 0.22rem; }
+  .lang-row { font-size: 0.67rem; margin-bottom: 0.22rem; }
+  .lbadge { font-size: 0.56rem; padding: 0.06rem 0.34rem; }
 
-  .dispo { font-size: 0.67rem; line-height: 1.5; }
-  .dispo strong { font-size: 0.69rem; margin-bottom: 0.08rem; }
+  .htag { font-size: 0.6rem; padding: 0.08rem 0.32rem; }
+  .hobby-tags { gap: 0.2rem; }
 
-  .profil { font-size: 0.73rem; line-height: 1.55; }
+  .dispo { font-size: 0.65rem; line-height: 1.45; }
+  .dispo strong { font-size: 0.67rem; margin-bottom: 0.06rem; }
 
-  .card { padding-bottom: 0.65rem; margin-bottom: 0.65rem; }
-  .card-head { margin-bottom: 0.12rem; gap: 0.6rem; }
-  .card-title { font-size: 0.78rem; }
-  .card-date { font-size: 0.62rem; padding: 0.08rem 0.38rem; }
-  .card-sub { font-size: 0.66rem; margin-bottom: 0.32rem; }
-  .card-desc { font-size: 0.69rem; line-height: 1.5; }
-  .card-desc ul { gap: 0.14rem; }
+  .profil { font-size: 0.72rem; line-height: 1.5; }
 
-  .tag { font-size: 0.59rem; padding: 0.08rem 0.3rem; }
-  .tags { margin-top: 0.35rem; gap: 0.16rem; }
+  .card { padding-bottom: 0.6rem; margin-bottom: 0.6rem; }
+  .card-head { margin-bottom: 0.1rem; gap: 0.6rem; }
+  .card-title { font-size: 0.76rem; }
+  .card-date { font-size: 0.6rem; padding: 0.07rem 0.34rem; }
+  .card-sub { font-size: 0.64rem; margin-bottom: 0.28rem; }
+  .card-desc { font-size: 0.67rem; line-height: 1.45; }
+  .card-desc ul { gap: 0.12rem; }
 
+  .tag { font-size: 0.57rem; padding: 0.07rem 0.28rem; }
+  .tags { margin-top: 0.3rem; gap: 0.14rem; }
+
+  /* Une experience ou un projet ne se coupe jamais en deux feuilles.
+     La regle ne porte pas sur les <section> : appliquee a des blocs longs,
+     elle creait de grands vides au lieu d'un flux continu. */
   .card { page-break-inside: avoid; break-inside: avoid; }
-  section { page-break-inside: avoid; break-inside: avoid; }
+
+  a { color: inherit; text-decoration: none; }
 }

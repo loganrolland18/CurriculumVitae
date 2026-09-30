@@ -351,11 +351,20 @@ body {
   letter-spacing: 0.01em;
 }
 
-.contact-fab {
+/* Barre d'actions : imprimer / enregistrer en PDF, et contacts. Sur
+   telephone il n'existe aucun equivalent de Ctrl+P ; sans ce bouton,
+   l'enregistrement du CV en PDF reste introuvable. */
+.actions {
   position: fixed;
   right: 1.2rem;
   bottom: 1.2rem;
   z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.action-fab {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -373,16 +382,25 @@ body {
   cursor: pointer;
 }
 
-.contact-fab:hover {
+.action-fab:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
   filter: brightness(1.03);
 }
 
-.contact-fab:focus-visible {
+.action-fab:focus-visible {
   outline: 2px solid var(--accent-border);
   outline-offset: 2px;
 }
+
+/* Le bouton d'impression est secondaire : meme gabarit, teinte sobre, pour
+   que l'appel reste l'action mise en avant. */
+.print-fab {
+  background: var(--surface);
+  color: var(--accent);
+  border-color: var(--accent-border);
+}
+.print-fab:hover { background: var(--accent-bg); }
 
 .contact-backdrop {
   position: fixed;
@@ -607,9 +625,8 @@ body {
   .card-desc { font-size: 0.8rem; }
 
   /* Bouton d'appel : present, mais discret pour ne pas faire application. */
-  .contact-fab {
-    right: 0.85rem;
-    bottom: 0.85rem;
+  .actions { right: 0.85rem; bottom: 0.85rem; gap: 0.4rem; }
+  .action-fab {
     padding: 0.5rem 0.7rem;
     font-size: 0.74rem;
     box-shadow: 0 4px 14px rgba(20, 35, 60, 0.22);
@@ -645,7 +662,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .contact-fab,
+  .action-fab,
   .contact-panel,
   .contact-backdrop,
   .contact-panel-list a {
@@ -680,7 +697,7 @@ body {
     overflow: visible;
   }
 
-  .contact-fab,
+  .actions,
   .contact-backdrop,
   .contact-panel { display: none !important; }
 

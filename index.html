@@ -310,10 +310,16 @@
   </div>
 </div>
 
-<button class="contact-fab" type="button" aria-controls="contact-panel" aria-expanded="false" aria-label="Ouvrir les contacts">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+<div class="actions">
+<button class="action-fab print-fab" type="button" aria-label="Imprimer ou enregistrer en PDF">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8" rx="1"></rect></svg>
+  <span>PDF</span>
+</button>
+<button class="action-fab contact-fab" type="button" aria-controls="contact-panel" aria-expanded="false" aria-label="Ouvrir les contacts">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
   <span>Contact</span>
 </button>
+</div>
 
 <div class="contact-backdrop" aria-hidden="true"></div>
 
@@ -332,6 +338,13 @@
 
 <script>
   (function () {
+    const imprimer = document.querySelector('.print-fab');
+    if (imprimer) {
+      imprimer.addEventListener('click', function () {
+        window.print();
+      });
+    }
+
     const fab = document.querySelector('.contact-fab');
     const backdrop = document.querySelector('.contact-backdrop');
     const panel = document.querySelector('#contact-panel');

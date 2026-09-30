@@ -681,6 +681,13 @@ body {
 
   html, body { background: #fff; }
 
+  /* Tout ce bloc est exprime en rem : changer la taille de reference met la
+     page entiere a l'echelle d'un seul reglage. Indispensable pour garder de
+     la marge — Firefox ne sait pas couper une grille CSS sur deux pages, il
+     la deplace entiere. Un depassement d'un pixel donne donc une page 1 vide
+     avec le seul en-tete, au lieu d'une coupure propre. */
+  html { font-size: 14px; }
+
   body {
     padding: 0;
     margin: 0;

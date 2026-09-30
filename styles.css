@@ -13,6 +13,15 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Quand la page est plus large que l'ecran, les navigateurs mobiles gonflent
+   d'eux-memes les paragraphes longs. La mise en page cesse alors d'etre celle
+   du document. On rend la main au CSS. */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: clip;
+}
+
 body {
   font-family: 'Outfit', sans-serif;
   background: var(--bg);
@@ -386,6 +395,11 @@ body {
   pointer-events: none;
   transition: opacity 0.2s ease;
 }
+
+/* Hors ouverture, le voile est retire du flux : etant en position fixe, il
+   echappe au rognage et suffisait a provoquer un defilement horizontal d'un
+   pixel quand la largeur de mise en page n'est pas entiere. */
+.contact-backdrop:not(.open) { display: none; }
 
 .contact-backdrop.open {
   opacity: 1;

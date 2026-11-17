@@ -2,398 +2,282 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<!-- La page se presente comme un document : le telephone adopte la largeur
-     de la mise en page et l'ajuste a l'ecran, comme une visionneuse PDF.
-     Le pincement pour zoomer reste actif (aucun user-scalable=no).
-     Sur ordinateur cette balise est ignoree. Revenir au reflux mobile :
-     remettre content="width=device-width, initial-scale=1.0". -->
-<meta name="viewport" content="width=940">
-<title>CV – Logan Rolland – Développeur Full Stack Web &amp; Web Mobile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CV – Logan Rolland – Développeur full stack web &amp; web mobile, alternance Bachelor 3</title>
+<meta name="description" content="Logan Rolland, développeur web full stack (PHP, JavaScript, React) titulaire du titre DWWM. Recherche une alternance Bachelor 3 — Sedan, Ardennes, Grand Est.">
+<meta property="og:type" content="profile">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Logan Rolland – Développeur full stack web &amp; web mobile">
+<meta property="og:description" content="Titulaire du titre DWWM, recherche une alternance Bachelor 3. PHP, JavaScript, React, MySQL. Sedan (08), Grand Est.">
+<meta name="theme-color" content="#1d4fc4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231d4fc4'/%3E%3Ctext x='16' y='21' font-family='Arial' font-size='13' font-weight='700' fill='white' text-anchor='middle'%3ELR%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="page">
+<main class="page">
 
+  <!-- ============ EN-TETE ============ -->
   <header class="header">
-    <div class="header-left">
-      <div class="header-identity">
-        <div class="avatar" aria-label="Photo de profil">LR</div>
-        <div>
-          <div class="name">Logan <em>Rolland</em></div>
-          <div class="headline">Développeur Full Stack Web &amp; Web Mobile</div>
-          <div class="headline-sub">Alternance Bachelor 3 — disponible immédiatement</div>
-        </div>
+    <div class="identity">
+      <div class="avatar" aria-hidden="true">LR</div>
+      <div>
+        <h1 class="name">Logan <span>Rolland</span></h1>
+        <p class="headline">Développeur full stack web&nbsp;&amp;&nbsp;web&nbsp;mobile</p>
+        <p class="headline-sub">Recherche une alternance — Bachelor 3</p>
       </div>
     </div>
-    <div class="contacts">
-      <a class="hc" href="tel:0695582307">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72c.127.96.36 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.24a16 16 0 0 0 6 6l1.62-1.62a2 2 0 0 1 2.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-        06.95.58.23.07
-      </a>
-      <a class="hc" href="mailto:logan.rolland18@gmail.com">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-        logan.rolland18@gmail.com
-      </a>
-      <span class="hc">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-        Sedan — Ardennes (08)
-      </span>
-      <span class="hc">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-        Permis B en cours
-      </span>
-      <span class="hc">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>
-        20 ans
-      </span>
-    </div>
+
+    <ul class="contacts">
+      <li><a href="tel:+33695582307">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72c.127.96.36 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.24a16 16 0 0 0 6 6l1.62-1.62a2 2 0 0 1 2.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        06 95 58 23 07</a></li>
+      <li><a href="mailto:logan.rolland18@gmail.com">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        logan.rolland18@gmail.com</a></li>
+      <li>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        Sedan — Ardennes (08)</li>
+      <li>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        20 ans · Permis B en cours</li>
+    </ul>
   </header>
+
+  <!-- ============ CHIFFRES CLES ============ -->
+  <ul class="stats" aria-label="En bref">
+    <li><strong>Bac+2</strong><span>Titre pro DWWM<br>RNCP niveau 5</span></li>
+    <li><strong>4 projets</strong><span>conçus et développés<br>entièrement seul</span></li>
+    <li><strong>49 pages</strong><span>dossier technique<br>de certification</span></li>
+    <li><strong>3 / 1</strong><span>semaines entreprise /<br>formation à distance</span></li>
+  </ul>
+
+  <section class="profil" aria-labelledby="t-profil">
+    <h2 id="t-profil" class="st">Profil</h2>
+    <p>Titulaire du titre Développeur Web et Web Mobile, je cherche une alternance pour mon Bachelor 3 Concepteur de solutions digitales, <strong>disponible immédiatement</strong>. J'ai l'habitude de mener un projet seul de bout en bout, du recueil du besoin à la mise en ligne, en PHP comme en React, avec une attention particulière à la sécurité et à la qualité du code.</p>
+  </section>
 
   <div class="body">
 
-    <aside class="sidebar">
+    <div class="main">
 
-      <section>
-        <div class="st">Compétences</div>
+      <!-- ============ PARCOURS (frise) ============ -->
+      <section aria-labelledby="t-parcours">
+        <h2 id="t-parcours" class="st">Parcours</h2>
 
-        <div class="skill-group">
-          <div class="skill-group-label">Maîtrisé</div>
-          <div class="skill-tags">
-            <span class="stag hi">HTML5 / CSS3</span>
-            <span class="stag hi">PHP 8.2</span>
-            <span class="stag hi">MySQL / SQL</span>
-            <span class="stag hi">JavaScript</span>
+        <ol class="timeline">
+          <li class="tl-item">
+            <div class="tl-head">
+              <h3>Développeur web freelance</h3>
+              <span class="tl-date">2026 – en cours</span>
+            </div>
+            <p class="tl-sub">Projet client — commerce local, Sedan (08)</p>
+            <ul class="tl-desc">
+              <li>Application de fidélité (PWA) : compte client, carte à QR code, récompenses, scanner en caisse, back-office</li>
+              <li>Cadrage, chiffrage, développement, hébergement et suivi client en autonomie</li>
+            </ul>
+            <p class="tl-tags">React · TypeScript · Vite · Tailwind · Supabase · PostgreSQL</p>
+          </li>
+
+          <li class="tl-item">
+            <div class="tl-head">
+              <h3>Développeur alternant</h3>
+              <span class="tl-date">Août – Sept. 2026</span>
+            </div>
+            <p class="tl-sub">Valma Study — Reims (51)</p>
+            <ul class="tl-desc">
+              <li>Fonctionnalités métier en PHP sur un site WordPress en production (shortcodes, JetEngine, Ultimate Member)</li>
+              <li>Tests sur pages dupliquées avant mise en ligne, déploiement FTP</li>
+            </ul>
+            <p class="tl-tags">WordPress · PHP · Elementor · JetEngine</p>
+          </li>
+
+          <li class="tl-item">
+            <div class="tl-head">
+              <h3>Stage développeur web</h3>
+              <span class="tl-date">2025 · 1 mois</span>
+            </div>
+            <p class="tl-sub">Mission à distance pour un client particulier</p>
+            <ul class="tl-desc">
+              <li>Projet géré seul de A à Z : besoin, base de données, développement front et back, livraison</li>
+            </ul>
+            <p class="tl-tags">PHP 8 · MySQL · JavaScript · HTML/CSS · Git</p>
+          </li>
+
+          <li class="tl-item tl-edu">
+            <div class="tl-head">
+              <h3>Titre pro Développeur Web et Web Mobile</h3>
+              <span class="tl-date">2024 – 2025</span>
+            </div>
+            <p class="tl-sub">RNCP niveau 5 (Bac+2) — front, back, BDD, sécurité (OWASP), MVC, Git</p>
+            <p class="tl-sub">Obtenu sur dossier technique et soutenance orale devant jury professionnel</p>
+          </li>
+
+          <li class="tl-item tl-edu">
+            <div class="tl-head">
+              <h3>Baccalauréat général</h3>
+              <span class="tl-date">2023</span>
+            </div>
+            <p class="tl-sub">Spécialités Mathématiques et NSI — Cordées de la réussite</p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ============ PROJETS ============ -->
+      <section aria-labelledby="t-projets">
+        <h2 id="t-projets" class="st">Projets</h2>
+
+        <article class="project">
+          <div class="tl-head">
+            <h3>Rosëlys — plateforme collaborative et e-commerce</h3>
+            <span class="tl-date">2024 – 2025</span>
           </div>
-        </div>
+          <p class="tl-sub">Projet de certification DWWM, sans framework</p>
+          <ul class="tl-desc">
+            <li>Boutique intégrée : catalogue, panier AJAX, stocks, commandes ; posts, modération, administration</li>
+            <li>PHP 8.2 POO avec PDO, architecture MVC ; sécurité : CSRF, XSS, rate limiting, anonymisation</li>
+          </ul>
+          <p class="tl-tags">PHP 8.2 · MySQL · JavaScript · AJAX · MVC</p>
+        </article>
 
-        <div class="skill-group">
-          <div class="skill-group-label">Pratiqué</div>
-          <div class="skill-tags">
-            <span class="stag">Git / GitHub</span>
-            <span class="stag">API REST</span>
-            <span class="stag">AJAX</span>
-            <span class="stag">Python</span>
-            <span class="stag">WordPress</span>
-            <span class="stag">Symfony</span>
+        <article class="project">
+          <div class="tl-head">
+            <h3>Copilite — assistant IA 100 % local</h3>
+            <span class="tl-date">2026 – en cours</span>
           </div>
-        </div>
-
-        <div class="skill-group">
-          <div class="skill-group-label">En apprentissage</div>
-          <div class="skill-tags">
-            <span class="stag">React</span>
-            <span class="stag">TypeScript</span>
-            <span class="stag">Supabase</span>
-            <span class="stag">PrestaShop</span>
-          </div>
-        </div>
+          <p class="tl-sub">Projet personnel — application de bureau</p>
+          <ul class="tl-desc">
+            <li>Assistant conversationnel sans cloud : modèle local via Ollama, recherche web écrite en Rust, historique SQLite</li>
+          </ul>
+          <p class="tl-tags">Rust · Tauri 2 · Ollama · SQLite · Python</p>
+        </article>
       </section>
 
-      <section>
-        <div class="st">Savoir-faire</div>
-        <div class="soft-list">
-          <div class="soft-item">Développement full stack</div>
-          <div class="soft-item">PHP orienté objet (POO)</div>
-          <div class="soft-item">Architecture MVC</div>
-          <div class="soft-item">Sécurité web (OWASP)</div>
-          <div class="soft-item">API REST / AJAX</div>
-          <div class="soft-item">Responsive design</div>
-          <div class="soft-item">Gestion de BDD</div>
-          <div class="soft-item">Documentation technique</div>
-        </div>
+    </div>
+
+    <!-- ============ COLONNE LATERALE ============ -->
+    <aside class="side">
+
+      <section aria-labelledby="t-comp">
+        <h2 id="t-comp" class="st">Compétences</h2>
+
+        <h3 class="sk-label">Maîtrisé</h3>
+        <ul class="chips">
+          <li class="hi">HTML / CSS</li>
+          <li class="hi">PHP 8 POO</li>
+          <li class="hi">MySQL / SQL</li>
+          <li class="hi">JavaScript</li>
+        </ul>
+
+        <h3 class="sk-label">Pratiqué</h3>
+        <ul class="chips">
+          <li>React</li>
+          <li>TypeScript</li>
+          <li>Supabase</li>
+          <li>Git</li>
+          <li>API REST</li>
+          <li>WordPress</li>
+          <li>Python</li>
+        </ul>
+
+        <h3 class="sk-label">En apprentissage</h3>
+        <ul class="chips">
+          <li>Symfony</li>
+          <li>Rust / Tauri</li>
+          <li>PrestaShop</li>
+        </ul>
+
+        <h3 class="sk-label">Méthodes</h3>
+        <p class="side-text">MVC, sécurité web (OWASP), responsive, documentation technique</p>
       </section>
 
-      <section>
-        <div class="st">Qualités</div>
-        <div class="soft-list">
-          <div class="soft-item">Autonome &amp; rigoureux</div>
-          <div class="soft-item">Curieux, esprit d'analyse</div>
-          <div class="soft-item">Force de proposition</div>
-          <div class="soft-item">Esprit d'équipe</div>
-        </div>
+      <section aria-labelledby="t-dispo">
+        <h2 id="t-dispo" class="st">Disponibilité</h2>
+        <p class="side-text"><strong>Immédiate</strong> — Bachelor 3 Concepteur de solutions digitales<br>
+        Mobile dans le Grand Est, télétravail partiel possible</p>
       </section>
 
-      <section>
-        <div class="st">Langues</div>
-        <div class="lang-row"><span>Français</span><span class="lbadge">Natif</span></div>
-        <div class="lang-row"><span>Anglais</span><span class="lbadge">B1</span></div>
+      <section aria-labelledby="t-lang">
+        <h2 id="t-lang" class="st">Langues</h2>
+        <p class="side-text">Français natif · Anglais B1</p>
       </section>
 
-      <section>
-        <div class="st">Centres d'intérêt</div>
-        <div class="hobby-tags">
-          <span class="htag">Programmation</span>
-          <span class="htag">Modélisation 3D</span>
-          <span class="htag">Impression 3D</span>
-          <span class="htag">Rétro-gaming</span>
-        </div>
+      <section aria-labelledby="t-int">
+        <h2 id="t-int" class="st">Centres d'intérêt</h2>
+        <p class="side-text">IA locale, modélisation et impression 3D, rétro-gaming</p>
       </section>
-
-      <section>
-        <div class="st">Disponibilité</div>
-        <div class="dispo">
-          <strong>Alternance — Bachelor 3</strong>
-          Disponible immédiatement<br>
-          Rythme 3 semaines en entreprise / 1 semaine en formation à distance<br>
-          Mobilité sur toute la région Grand Est, télétravail partiel possible
-        </div>
-      </section>
+      <!-- QR code : uniquement sur la version imprimee / PDF -->
+      <div class="qr-block" aria-hidden="true">
+        <svg class="qr" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" viewBox="0 0 33 33"><path stroke="#16233a" d="M0 0.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m3 0h1m5 0h7m-33 1h1m5 0h1m1 0h1m8 0h1m1 0h1m4 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h2m4 0h4m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m4 0h1m9 0h1m1 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h8m2 0h1m1 0h3m3 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m3 0h1m2 0h2m2 0h2m1 0h5m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-22 1h1m1 0h2m3 0h3m2 0h1m-24 1h1m2 0h9m2 0h7m3 0h2m2 0h1m1 0h3m-32 1h2m4 0h1m1 0h1m1 0h1m2 0h2m2 0h3m1 0h2m4 0h3m1 0h1m-33 1h3m1 0h1m1 0h1m5 0h1m1 0h5m1 0h4m2 0h1m1 0h5m-32 1h2m1 0h1m2 0h2m1 0h1m3 0h1m2 0h1m2 0h1m1 0h6m2 0h3m-32 1h2m3 0h1m1 0h2m1 0h1m1 0h8m2 0h1m2 0h2m-28 1h1m3 0h1m6 0h2m3 0h2m1 0h1m1 0h1m5 0h1m2 0h1m-30 1h1m1 0h1m1 0h2m4 0h4m1 0h2m8 0h1m1 0h2m-30 1h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h3m1 0h1m2 0h2m5 0h1m3 0h2m1 0h1m-32 1h2m1 0h3m1 0h3m1 0h2m2 0h1m2 0h2m1 0h1m1 0h5m-29 1h4m3 0h3m1 0h1m1 0h3m2 0h3m1 0h1m3 0h1m1 0h1m1 0h1m1 0h1m-33 1h1m1 0h1m1 0h4m1 0h1m1 0h2m2 0h2m2 0h5m2 0h2m1 0h4m-32 1h4m3 0h1m1 0h5m2 0h2m3 0h2m2 0h1m1 0h3m-29 1h1m1 0h4m1 0h2m1 0h1m1 0h1m9 0h1m2 0h1m1 0h1m2 0h1m-33 1h3m2 0h1m1 0h3m3 0h1m2 0h1m1 0h1m1 0h4m3 0h4m-31 1h1m2 0h5m1 0h3m3 0h2m3 0h4m1 0h1m1 0h2m1 0h3m-33 1h1m1 0h2m6 0h3m1 0h1m1 0h2m4 0h2m4 0h1m1 0h2m-32 1h3m3 0h1m1 0h1m2 0h6m2 0h2m2 0h6m2 0h2m-25 1h1m1 0h1m1 0h1m2 0h2m1 0h1m5 0h1m3 0h1m1 0h2m-32 1h7m1 0h1m1 0h1m1 0h5m1 0h4m1 0h2m1 0h1m1 0h1m1 0h1m-31 1h1m5 0h1m1 0h5m1 0h1m5 0h1m2 0h2m3 0h5m-33 1h1m1 0h3m1 0h1m1 0h2m3 0h3m1 0h2m1 0h1m2 0h6m-29 1h1m1 0h3m1 0h1m1 0h1m3 0h3m6 0h2m2 0h1m1 0h1m1 0h4m-33 1h1m1 0h3m1 0h1m3 0h5m1 0h4m1 0h1m3 0h1m1 0h3m1 0h2m-33 1h1m5 0h1m3 0h2m2 0h3m6 0h1m3 0h6m-33 1h7m1 0h2m1 0h4m2 0h1m5 0h3m1 0h3"/></svg>
+        <p class="qr-label">Version en ligne</p>
+        <p class="qr-url">loganrolland18.github.io<br>/CurriculumVitae</p>
+      </div>
 
     </aside>
-
-    <main class="main">
-
-      <section>
-        <div class="st">Profil</div>
-        <div class="profil">
-          Titulaire du titre professionnel Développeur Web et Web Mobile (RNCP niv. 5), je recherche une alternance pour préparer ma troisième année de bachelor Concepteur de solutions digitales — disponible immédiatement, à raison de trois semaines en entreprise pour une semaine de formation à distance. J'ai mené de bout en bout un projet web full stack complet — PHP 8.2 en POO, MySQL, JavaScript, API REST, incluant un module e-commerce (panier, catalogue, gestion des stocks). Je développe aujourd'hui une application de fidélité pour un client sous statut d'auto-entrepreneur, et j'ai travaillé sur un site WordPress en production. Rigoureux sur la qualité du code, la sécurité et la documentation, je suis à l'aise autant sur la logique back-end que sur l'intégration front-end.
-        </div>
-      </section>
-
-      <section>
-        <div class="st">Expérience professionnelle</div>
-
-        <div class="card">
-          <div class="card-head">
-            <div class="card-title">Développeur web indépendant</div>
-            <span class="card-date">2026 – en cours</span>
-          </div>
-          <div class="card-sub">Auto-entrepreneur — Sedan (08)</div>
-          <div class="card-desc">
-            <ul>
-              <li>Développement d'applications web pour des clients locaux, de la conception à la mise en production</li>
-              <li>Cadrage du besoin, chiffrage, hébergement et maintenance</li>
-              <li>Relation client et suivi de projet en autonomie complète</li>
-            </ul>
-          </div>
-          <div class="tags">
-            <span class="tag">React</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">Supabase</span>
-            <span class="tag">PHP</span>
-            <span class="tag">Git</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-head">
-            <div class="card-title">Développeur alternant</div>
-            <span class="card-date">Septembre 2026</span>
-          </div>
-          <div class="card-sub">Valma Study — Reims (51)</div>
-          <div class="card-desc">
-            <ul>
-              <li>Développement de fonctionnalités métier en PHP sur un site WordPress en production</li>
-              <li>Snippets PHP appelés par shortcode, intégration avec JetEngine et Ultimate Member</li>
-              <li>Tests sur pages dupliquées avant mise en ligne, déploiement par FTP</li>
-            </ul>
-          </div>
-          <div class="tags">
-            <span class="tag">WordPress</span>
-            <span class="tag">PHP</span>
-            <span class="tag">Elementor</span>
-            <span class="tag">JetEngine</span>
-            <span class="tag">FTP</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-head">
-            <div class="card-title">Développeur Full Stack Web</div>
-            <span class="card-date">Un mois</span>
-          </div>
-          <div class="card-sub">Stage — Sedan (08)</div>
-          <div class="card-desc">
-            <ul>
-              <li>Développement et maintenance d'applications web (front-end &amp; back-end)</li>
-              <li>Intégration et gestion de bases de données MySQL</li>
-              <li>Mise en place de bonnes pratiques de sécurité</li>
-              <li>Travail en autonomie sur plusieurs projets simultanés</li>
-            </ul>
-          </div>
-          <div class="tags">
-            <span class="tag">HTML/CSS</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">PHP 8.2</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">Git</span>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="st">Formation</div>
-
-        <div class="card">
-          <div class="card-head">
-            <div class="card-title">Titre Pro DWWM — Développeur Web et Web Mobile</div>
-            <span class="card-date">2024 – 2025</span>
-          </div>
-          <div class="card-sub">Titre RNCP Niveau 5 (équivalent Bac+2)</div>
-          <div class="card-desc">
-            Développement front-end et back-end, conception et gestion de bases de données, sécurisation d'applications web (OWASP, CSRF, injections SQL), responsive design, architecture MVC, versioning Git.
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-head">
-            <div class="card-title">Baccalauréat Général</div>
-            <span class="card-date">2020 – 2023</span>
-          </div>
-          <div class="card-sub">Spécialités Mathématiques &amp; NSI (Numérique et Sciences Informatiques)</div>
-          <div class="card-desc">
-            Option Sciences de l'Ingénieur en première. Cordées de la réussite de la 3ème à la terminale.
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="st">Projets</div>
-
-        <div class="card">
-          <div class="card-head">
-            <div class="card-title">Application de fidélité — projet client</div>
-            <span class="card-date">2026 – en cours</span>
-          </div>
-          <div class="card-sub">Progressive Web App développée pour un commerce local</div>
-          <div class="card-desc">
-            <ul>
-              <li>Compte client, carte de fidélité numérique avec QR code, fil d'actualités et récompenses</li>
-              <li>Scanner de passage en caisse côté commerçant</li>
-              <li>Tableau de bord d'administration</li>
-              <li>Conception, développement, hébergement et relation client en autonomie</li>
-            </ul>
-          </div>
-          <div class="tags">
-            <span class="tag">React</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">Vite</span>
-            <span class="tag">Tailwind CSS</span>
-            <span class="tag">Supabase</span>
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">PWA</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-head">
-            <div class="card-title">Rosëlys — Plateforme collaborative avec module e-commerce</div>
-            <span class="card-date">2024 – 2025</span>
-          </div>
-          <div class="card-sub">Projet de certification DWWM — développé sans framework</div>
-          <div class="card-desc">
-            <ul>
-              <li>Boutique en ligne intégrée : catalogue produits, panier dynamique (AJAX), gestion des stocks, commandes — logique e-commerce fonctionnelle de bout en bout</li>
-              <li>Back-end PHP 8.2 avec PDO, architecture MVC, requêtes SQL optimisées</li>
-              <li>Sécurité renforcée : tokens CSRF, protection XSS, rate limiting, soft delete, anonymisation</li>
-              <li>Plateforme complète : posts, modération, thèmes dynamiques, panel d'administration</li>
-              <li>Dossier technique de 49 pages et soutenance orale devant jury professionnel</li>
-            </ul>
-          </div>
-          <div class="tags">
-            <span class="tag">PHP 8.2 POO</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">AJAX</span>
-            <span class="tag">HTML5/CSS3</span>
-            <span class="tag">PDO</span>
-            <span class="tag">MVC</span>
-            <span class="tag">CSRF</span>
-            <span class="tag">Git</span>
-            <span class="tag">API REST</span>
-          </div>
-        </div>
-      </section>
-
-    </main>
   </div>
-</div>
+</main>
 
+<!-- ============ ACTIONS FLOTTANTES ============ -->
 <div class="actions">
-<button class="action-fab print-fab" type="button" aria-label="Imprimer ou enregistrer en PDF">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8" rx="1"></rect></svg>
-  <span>PDF</span>
-</button>
-<button class="action-fab contact-fab" type="button" aria-controls="contact-panel" aria-expanded="false" aria-label="Ouvrir les contacts">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-  <span>Contact</span>
-</button>
+  <button class="fab fab-print" type="button" aria-label="Enregistrer en PDF ou imprimer">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>
+    <span>PDF</span>
+  </button>
+  <button class="fab fab-contact" type="button" aria-controls="contact-panel" aria-expanded="false" aria-label="Me contacter">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+    <span>Contact</span>
+  </button>
 </div>
 
-<div class="contact-backdrop" aria-hidden="true"></div>
+<div class="contact-backdrop"></div>
 
-<aside id="contact-panel" class="contact-panel" aria-hidden="true">
+<div id="contact-panel" class="contact-panel" role="dialog" aria-label="Me contacter" inert>
   <div class="contact-panel-head">
     <strong>Me contacter</strong>
-    <button class="contact-close" type="button" aria-label="Fermer le panneau de contact">×</button>
+    <button class="contact-close" type="button" aria-label="Fermer">×</button>
   </div>
-  <div class="contact-panel-list">
-    <a href="mailto:logan.rolland18@gmail.com">logan.rolland18@gmail.com</a>
-    <a href="tel:0695582307">06.95.58.23.07</a>
-    <a href="https://maps.google.com/?q=Sedan+Ardennes" target="_blank" rel="noopener noreferrer">Sedan — Ardennes (08)</a>
-    <a href="https://github.com/loganrolland18" target="_blank" rel="noopener noreferrer">github.com/loganrolland18</a>
-  </div>
-</aside>
+  <a href="tel:+33695582307">Appeler — 06 95 58 23 07</a>
+  <a href="mailto:logan.rolland18@gmail.com">Écrire — logan.rolland18@gmail.com</a>
+  <a href="https://maps.google.com/?q=Sedan+Ardennes" target="_blank" rel="noopener noreferrer">Sedan — Ardennes (08)</a>
+</div>
 
 <script>
   (function () {
-    const imprimer = document.querySelector('.print-fab');
-    if (imprimer) {
-      imprimer.addEventListener('click', function () {
-        window.print();
-      });
+    var printBtn = document.querySelector('.fab-print');
+    var fab = document.querySelector('.fab-contact');
+    var backdrop = document.querySelector('.contact-backdrop');
+    var panel = document.getElementById('contact-panel');
+    var closeBtn = document.querySelector('.contact-close');
+
+    if (printBtn) {
+      printBtn.addEventListener('click', function () { window.print(); });
     }
+    if (!fab || !backdrop || !panel || !closeBtn) return;
 
-    const fab = document.querySelector('.contact-fab');
-    const backdrop = document.querySelector('.contact-backdrop');
-    const panel = document.querySelector('#contact-panel');
-    const closeBtn = document.querySelector('.contact-close');
-
-    if (!fab || !backdrop || !panel || !closeBtn) {
-      return;
+    function setOpen(open) {
+      panel.classList.toggle('open', open);
+      backdrop.classList.toggle('open', open);
+      fab.setAttribute('aria-expanded', String(open));
+      // inert : hors ouverture, les liens du panneau sortent de la navigation clavier.
+      if (open) {
+        panel.removeAttribute('inert');
+        panel.querySelector('a').focus();
+      } else {
+        panel.setAttribute('inert', '');
+      }
     }
-
-    const closePanel = function () {
-      panel.classList.remove('open');
-      backdrop.classList.remove('open');
-      document.body.classList.remove('contact-open');
-      panel.setAttribute('aria-hidden', 'true');
-      fab.setAttribute('aria-expanded', 'false');
-    };
-
-    const openPanel = function () {
-      panel.classList.add('open');
-      backdrop.classList.add('open');
-      document.body.classList.add('contact-open');
-      panel.setAttribute('aria-hidden', 'false');
-      fab.setAttribute('aria-expanded', 'true');
-    };
 
     fab.addEventListener('click', function () {
-      if (panel.classList.contains('open')) {
-        closePanel();
-      } else {
-        openPanel();
-      }
+      setOpen(!panel.classList.contains('open'));
     });
-
-    closeBtn.addEventListener('click', closePanel);
-    backdrop.addEventListener('click', closePanel);
-
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') {
-        closePanel();
-      }
-    });
-
-    document.addEventListener('click', function (event) {
-      if (!panel.contains(event.target) && !fab.contains(event.target)) {
-        closePanel();
-      }
+    closeBtn.addEventListener('click', function () { setOpen(false); fab.focus(); });
+    backdrop.addEventListener('click', function () { setOpen(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && panel.classList.contains('open')) { setOpen(false); fab.focus(); }
     });
   })();
 </script>
-
 </body>
 </html>

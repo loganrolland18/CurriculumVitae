@@ -1,783 +1,687 @@
+/* ==================================================================
+   CV Logan Rolland — direction « frise + chiffres clés »
+
+   Toutes les tailles sont en rem : la taille de reference (html) sert
+   de bouton de zoom global. Ecran = 16px, telephone = 15px,
+   impression = 10pt. Le texte courant ne descend jamais sous ~9pt
+   imprime : la place se gagne sur le contenu et les espacements,
+   jamais en reduisant la police.
+   ================================================================== */
 
 :root {
-  --bg:           #f1f5f9;
-  --surface:      #ffffff;
-  --sidebar:      #e7edf5;
-  --text:         #182536;
-  --muted:        #637286;
-  --border:       #d2dce8;
-  --accent:       #2358d3;
-  --accent-bg:    #e8f0ff;
-  --accent-border:#b3c8f6;
+  --bg:            #eef2f7;
+  --surface:       #ffffff;
+  --side:          #f5f8fc;
+  --text:          #16233a;
+  --text-2:        #46546a;   /* texte secondaire : contraste AA sur blanc */
+  --muted:         #66748a;
+  --border:        #d9e1ec;
+  --accent:        #1d4fc4;
+  --accent-bg:     #eaf1ff;
+  --accent-border: #b9cdf5;
+  --edu:           #8aa4d6;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* Quand la page est plus large que l'ecran, les navigateurs mobiles gonflent
-   d'eux-memes les paragraphes longs. La mise en page cesse alors d'etre celle
-   du document. On rend la main au CSS. */
 html {
+  font-size: 16px;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  overflow-x: clip;
 }
 
 body {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
   background: var(--bg);
   color: var(--text);
-  padding: 2.5rem 1rem;
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  padding: 2.5rem 1rem 5rem;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }
 
+ul, ol { list-style: none; }
+a { color: inherit; }
+strong { font-weight: 600; color: var(--text); }
+
+svg {
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* ------------------------------------------------------------------
+   Feuille
+   ------------------------------------------------------------------ */
 .page {
-  max-width: 900px;
+  display: block;
+  max-width: 880px;
   margin: 0 auto;
   background: var(--surface);
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07), 0 12px 40px rgba(0,0,0,0.06);
+  box-shadow: 0 1px 3px rgba(20, 35, 60, 0.08), 0 12px 40px rgba(20, 35, 60, 0.07);
 }
 
+/* ------------------------------------------------------------------
+   En-tete
+   ------------------------------------------------------------------ */
 .header {
-  padding: 2.6rem 3rem 2.2rem;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem 2.5rem 1.4rem;
 }
 
-.header-identity {
+.identity {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1.1rem;
 }
 
 .avatar {
-  width: 64px;
-  height: 64px;
+  width: 3.6rem;
+  height: 3.6rem;
   border-radius: 50%;
-  background: var(--accent-bg);
-  border: 2px solid var(--accent-border);
-  color: var(--accent);
-  font-size: 1.1rem;
+  background: var(--accent);
+  color: #fff;
   font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  letter-spacing: 0.04em;
 }
 
 .name {
-  font-size: 2.6rem;
+  font-size: 2.3rem;
   font-weight: 700;
-  letter-spacing: -0.025em;
-  color: var(--text);
-  line-height: 1;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
 }
-.name em {
-  color: var(--accent);
-  font-style: normal;
-}
+.name span { color: var(--accent); }
 
 .headline {
-  font-size: 0.82rem;
+  font-size: 1.05rem;
   font-weight: 500;
-  color: var(--muted);
-  margin-top: 0.55rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  color: var(--text-2);
+  margin-top: 0.3rem;
+  line-height: 1.3;
 }
 
 .headline-sub {
-  font-size: 0.78rem;
+  display: inline-block;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--accent);
-  margin-top: 0.3rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 999px;
+  padding: 0.1rem 0.65rem;
+  margin-top: 0.45rem;
 }
 
 .contacts {
   display: flex;
   flex-direction: column;
-  gap: 0.38rem;
-  align-items: flex-end;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--text-2);
+}
+.contacts li { display: flex; align-items: center; gap: 0.5rem; }
+.contacts a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+.contacts a:hover { color: var(--accent); }
+.contacts svg { color: var(--accent); }
+
+/* ------------------------------------------------------------------
+   Chiffres cles
+   ------------------------------------------------------------------ */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.6rem;
+  padding: 0 2.5rem;
+}
+.stats li {
+  background: var(--accent-bg);
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+}
+.stats strong {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.2;
+}
+.stats span {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-2);
+  line-height: 1.35;
 }
 
-.hc {
+/* ------------------------------------------------------------------
+   Titres de section
+   ------------------------------------------------------------------ */
+.st {
   display: flex;
   align-items: center;
-  gap: 0.42rem;
-  color: var(--muted);
-  font-size: 0.8rem;
-  text-decoration: none;
-  font-weight: 400;
-  transition: color 0.15s;
+  gap: 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.8rem;
 }
-.hc:hover { color: var(--accent); }
-.hc svg { flex-shrink: 0; }
+.st::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
 
+/* ------------------------------------------------------------------
+   Profil
+   ------------------------------------------------------------------ */
+.profil {
+  padding: 1.5rem 2.5rem 0;
+}
+.profil p {
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------------
+   Corps : colonne principale + colonne laterale
+   ------------------------------------------------------------------ */
 .body {
   display: grid;
-  grid-template-columns: 252px 1fr;
-}
-
-.sidebar {
-  background: var(--sidebar);
-  border-right: 1px solid var(--border);
-  padding: 2.2rem 1.7rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  grid-template-columns: minmax(0, 1fr) 15.5rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--border);
 }
 
 .main {
-  padding: 2.2rem 2.6rem;
+  padding: 1.5rem 2rem 2rem 2.5rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.6rem;
 }
 
-.st {
-  font-size: 0.63rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1rem;
-  padding-bottom: 0.45rem;
-  border-bottom: 1.5px solid var(--accent-bg);
+.side {
+  background: var(--side);
+  border-left: 1px solid var(--border);
+  padding: 1.5rem 1.6rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
 }
 
-.skill-group {
-  margin-bottom: 0.9rem;
+/* ------------------------------------------------------------------
+   Frise chronologique
+   ------------------------------------------------------------------ */
+.timeline {
+  position: relative;
+  padding-left: 1.35rem;
 }
-.skill-group:last-child { margin-bottom: 0; }
+/* Ligne verticale */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.32rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: var(--accent-border);
+}
 
-.skill-group-label {
-  font-size: 0.68rem;
+.tl-item {
+  position: relative;
+  padding-bottom: 1rem;
+}
+.tl-item:last-child { padding-bottom: 0; }
+
+/* Point plein pour l'experience ; icone de diplome pour la formation
+   (comprehensible sans legende). */
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -1.35rem;
+  top: 0.38rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--surface);
+}
+.tl-edu::before {
+  /* Centree sur le meme axe que les points pleins */
+  left: -1.6rem;
+  top: 0.15rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d4fc4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z'/%3E%3Cpath d='M22 10v6'/%3E%3Cpath d='M6 12.5V16a6 3 0 0 0 12 0v-3.5'/%3E%3C/svg%3E")
+    center / 1.05rem no-repeat,
+    var(--surface);
+  box-shadow: 0 0 0 2px var(--surface);
+}
+
+.tl-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+.tl-head h3 {
+  font-size: 1rem;
   font-weight: 600;
+  line-height: 1.35;
+}
+.tl-date {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.tl-edu .tl-date { color: var(--muted); }
+
+.tl-sub {
+  font-size: 0.85rem;
   color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin-bottom: 0.45rem;
+  margin-top: 0.05rem;
 }
 
-.skill-tags {
+.tl-desc {
+  margin-top: 0.35rem;
+  color: var(--text-2);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.tl-desc li {
+  position: relative;
+  padding-left: 0.9rem;
+}
+.tl-desc li + li { margin-top: 0.15rem; }
+.tl-desc li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 0.32rem;
+  height: 0.32rem;
+  border-radius: 50%;
+  background: var(--accent-border);
+}
+
+/* Stack en ligne de texte : beaucoup plus compact que des etiquettes
+   encadrees, et toujours lisible. */
+.tl-tags {
+  margin-top: 0.3rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+/* ------------------------------------------------------------------
+   Projets
+   ------------------------------------------------------------------ */
+.project + .project {
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px dashed var(--border);
+}
+
+/* ------------------------------------------------------------------
+   Colonne laterale
+   ------------------------------------------------------------------ */
+.sk-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0.75rem 0 0.35rem;
+}
+.st + .sk-label { margin-top: 0; }
+
+.chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
+  gap: 0.3rem;
 }
-
-.stag {
-  font-size: 0.77rem;
+.chips li {
+  font-size: 0.8rem;
   font-weight: 500;
-  padding: 0.22rem 0.65rem;
-  border-radius: 3px;
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
   background: var(--surface);
-  color: var(--text);
   border: 1px solid var(--border);
-  letter-spacing: 0.01em;
+  color: var(--text);
 }
-.stag.hi {
+.chips li.hi {
   background: var(--accent-bg);
   border-color: var(--accent-border);
   color: var(--accent);
   font-weight: 600;
 }
 
-.soft-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.42rem;
-}
-.soft-item {
-  font-size: 0.83rem;
-  color: var(--text);
-  font-weight: 400;
-  padding-left: 1rem;
-  position: relative;
-  line-height: 1.4;
-}
-.soft-item::before {
-  content: '▸';
-  position: absolute;
-  left: 0;
-  color: var(--accent);
-  font-size: 0.68rem;
-  top: 0.15em;
+.side-text {
+  font-size: 0.86rem;
+  color: var(--text-2);
+  line-height: 1.5;
 }
 
-.lang-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.83rem;
-  margin-bottom: 0.38rem;
-}
-.lbadge {
-  font-size: 0.68rem;
-  font-weight: 600;
-  padding: 0.1rem 0.5rem;
-  border-radius: 2px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--muted);
-  letter-spacing: 0.04em;
-}
+/* ------------------------------------------------------------------
+   QR code vers la version web : imprime seulement (sur ecran, on est
+   deja sur le site, il ne servirait a rien).
+   ------------------------------------------------------------------ */
+.qr-block { display: none; }
 
-.hobby-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-}
-.htag {
-  font-size: 0.74rem;
-  padding: 0.18rem 0.55rem;
-  border-radius: 3px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--muted);
-}
-
-.dispo {
-  font-size: 0.82rem;
-  color: var(--muted);
-  line-height: 1.75;
-}
-.dispo strong {
+/* Annule le style global des icones (traits arrondis, epaisseur 2) :
+   un QR code doit avoir des modules carres et nets pour etre lu. */
+svg.qr {
   display: block;
-  font-weight: 600;
-  color: var(--text);
-  font-size: 0.84rem;
-  margin-bottom: 0.15rem;
+  width: 6.2rem;
+  height: 6.2rem;
+  stroke-width: 1;
+  stroke-linecap: butt;
+  stroke-linejoin: miter;
+  fill: none;
 }
 
-.profil {
-  font-size: 0.87rem;
-  line-height: 1.8;
-  color: var(--muted);
-  font-weight: 400;
-}
-
-.card {
-  padding-bottom: 1.4rem;
-  margin-bottom: 1.4rem;
-  border-bottom: 1px solid var(--border);
-}
-.card:last-child {
-  padding-bottom: 0;
-  margin-bottom: 0;
-  border-bottom: none;
-}
-
-.card-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 0.2rem;
-}
-.card-title {
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--text);
-  line-height: 1.35;
-}
-.card-date {
+.qr-label {
   font-size: 0.72rem;
   font-weight: 600;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 1px solid var(--accent-border);
-  padding: 0.12rem 0.5rem;
-  border-radius: 3px;
-  white-space: nowrap;
-  flex-shrink: 0;
-  letter-spacing: 0.02em;
-}
-.card-sub {
-  font-size: 0.79rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 0.65rem;
-  font-weight: 400;
+  margin-top: 0.45rem;
 }
-.card-desc {
-  font-size: 0.83rem;
-  color: var(--muted);
-  line-height: 1.7;
-}
-.card-desc ul {
-  display: flex;
-  flex-direction: column;
-  gap: 0.28rem;
-  padding: 0;
-}
-.card-desc li {
-  list-style: none;
-  position: relative;
-  padding-left: 1rem;
-}
-.card-desc li::before {
-  content: '▸';
-  position: absolute;
-  left: 0;
-  color: var(--accent);
-  font-size: 0.68rem;
-  top: 0.2em;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-  margin-top: 0.75rem;
-}
-.tag {
-  font-size: 0.7rem;
+.qr-url {
+  font-size: 0.8rem;
   font-weight: 500;
-  padding: 0.16rem 0.52rem;
-  border-radius: 3px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  color: var(--muted);
-  letter-spacing: 0.01em;
+  color: var(--accent);
+  line-height: 1.3;
 }
 
-/* Barre d'actions : imprimer / enregistrer en PDF, et contacts. Sur
-   telephone il n'existe aucun equivalent de Ctrl+P ; sans ce bouton,
-   l'enregistrement du CV en PDF reste introuvable. */
+/* ------------------------------------------------------------------
+   Boutons flottants
+   ------------------------------------------------------------------ */
 .actions {
   position: fixed;
   right: 1.2rem;
   bottom: 1.2rem;
   z-index: 40;
   display: flex;
-  align-items: center;
   gap: 0.5rem;
 }
 
-.action-fab {
+.fab {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.45rem;
-  padding: 0.62rem 0.85rem;
+  min-height: 2.75rem;          /* cible tactile 44px */
+  padding: 0 1rem;
   border-radius: 999px;
-  border: 1px solid var(--accent-border);
+  border: 1px solid var(--accent);
   background: var(--accent);
   color: #fff;
-  font-size: 0.78rem;
+  font-family: inherit;
+  font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
-  text-decoration: none;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-  transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
+  line-height: 1;
   cursor: pointer;
+  box-shadow: 0 6px 18px rgba(20, 35, 60, 0.2);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
+.fab svg { width: 1.1rem; height: 1.1rem; }
+.fab:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(20, 35, 60, 0.24); }
+.fab:focus-visible { outline: 3px solid var(--accent-border); outline-offset: 2px; }
 
-.action-fab:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
-  filter: brightness(1.03);
-}
-
-.action-fab:focus-visible {
-  outline: 2px solid var(--accent-border);
-  outline-offset: 2px;
-}
-
-/* Le bouton d'impression est secondaire : meme gabarit, teinte sobre, pour
-   que l'appel reste l'action mise en avant. */
-.print-fab {
+.fab-print {
   background: var(--surface);
   color: var(--accent);
   border-color: var(--accent-border);
 }
-.print-fab:hover { background: var(--accent-bg); }
 
 .contact-backdrop {
   position: fixed;
   inset: 0;
   z-index: 38;
-  background: rgba(25, 24, 28, 0.14);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
+  background: rgba(16, 24, 40, 0.25);
+  display: none;
 }
-
-/* Hors ouverture, le voile est retire du flux : etant en position fixe, il
-   echappe au rognage et suffisait a provoquer un defilement horizontal d'un
-   pixel quand la largeur de mise en page n'est pas entiere. */
-.contact-backdrop:not(.open) { display: none; }
-
-.contact-backdrop.open {
-  opacity: 1;
-  pointer-events: auto;
-}
+.contact-backdrop.open { display: block; }
 
 .contact-panel {
   position: fixed;
   right: 1.2rem;
-  bottom: 4.3rem;
+  bottom: 4.6rem;
   z-index: 39;
-  width: min(320px, calc(100vw - 2rem));
-  border: 1px solid var(--accent-border);
-  border-radius: 10px;
+  width: min(330px, calc(100vw - 2rem));
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1rem;
   background: var(--surface);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  padding: 0.95rem;
-  transform: translateY(12px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(20, 35, 60, 0.2);
   opacity: 0;
-  pointer-events: none;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
 }
-
 .contact-panel.open {
-  transform: translateY(0);
   opacity: 1;
-  pointer-events: auto;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
 }
 
 .contact-panel-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.75rem;
-}
-
-.contact-panel-head strong {
-  color: var(--text);
-  font-size: 0.88rem;
+  margin-bottom: 0.2rem;
 }
 
 .contact-close {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 8px;
   border: 1px solid var(--border);
   background: var(--bg);
-  color: var(--muted);
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
+  color: var(--text-2);
+  font-size: 1.2rem;
   line-height: 1;
   cursor: pointer;
 }
 
-.contact-panel-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.contact-panel-list a {
-  font-size: 0.82rem;
-  text-decoration: none;
-  color: var(--muted);
+.contact-panel a {
+  display: block;
+  padding: 0.65rem 0.75rem;
   border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 0.45rem 0.55rem;
+  border-radius: 8px;
   background: var(--bg);
-  opacity: 0;
-  transform: translateY(6px);
-  transition: color 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.9rem;
 }
-
-.contact-panel.open .contact-panel-list a {
-  opacity: 1;
-  transform: translateY(0);
-  transition:
-    opacity 0.22s ease,
-    transform 0.22s ease,
-    color 0.16s ease,
-    border-color 0.16s ease,
-    background 0.16s ease;
-}
-
-.contact-panel.open .contact-panel-list a:nth-child(1) { transition-delay: 0.03s; }
-.contact-panel.open .contact-panel-list a:nth-child(2) { transition-delay: 0.07s; }
-.contact-panel.open .contact-panel-list a:nth-child(3) { transition-delay: 0.11s; }
-.contact-panel.open .contact-panel-list a:nth-child(4) { transition-delay: 0.15s; }
-
-.contact-panel-list a:hover {
-  color: var(--accent);
+.contact-panel a:hover,
+.contact-panel a:focus-visible {
   border-color: var(--accent-border);
   background: var(--accent-bg);
+  color: var(--accent);
 }
 
 /* ------------------------------------------------------------------
-   Ecrans etroits : le CV garde sa nature de document.
-   La structure est celle de la page imprimee — feuille posee sur un fond,
-   en-tete, bandeau de reperes trame, puis le corps — au lieu d'une suite
-   de blocs empiles qui ferait ecran d'application.
+   Tablette et telephone : une seule colonne, texte a taille normale
    ------------------------------------------------------------------ */
-@media screen and (max-width: 768px) {
-  body {
-    padding: 1.15rem 0.85rem 2.6rem;
-    font-size: 13.5px;
-  }
+@media screen and (max-width: 760px) {
+  html { font-size: 15px; }
 
-  /* La feuille reste une feuille : bords nets, ombre courte, fond visible
-     tout autour, comme un PDF dans une visionneuse. */
-  .page {
-    border-radius: 3px;
-    box-shadow: 0 1px 2px rgba(20, 35, 60, 0.10), 0 10px 28px rgba(20, 35, 60, 0.08);
-  }
+  body { padding: 0 0 6rem; background: var(--surface); }
+
+  /* Plus de « feuille » : sur un ecran de telephone, la marge et l'ombre
+     ne font que voler de la largeur au texte. */
+  .page { border-radius: 0; box-shadow: none; }
 
   .header {
     flex-direction: column;
     align-items: stretch;
-    padding: 1.5rem 1.25rem 1.1rem;
     gap: 1rem;
+    padding: 1.6rem 1.25rem 1.1rem;
   }
+  .name { font-size: 1.9rem; }
 
-  .header-identity { gap: 0.9rem; }
-
-  .avatar {
-    width: 46px;
-    height: 46px;
-    font-size: 0.82rem;
-    border-width: 1.5px;
-  }
-
-  .name { font-size: 1.55rem; }
-  .headline { font-size: 0.7rem; margin-top: 0.38rem; }
-  .headline-sub { font-size: 0.68rem; margin-top: 0.22rem; }
-
+  /* Contacts en ligne qui passe a la ligne : 3 lignes au lieu de 4. */
   .contacts {
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 0.4rem 1.15rem;
-    padding-top: 0.85rem;
+    font-size: 0.88rem;
+    padding-top: 0.9rem;
     border-top: 1px solid var(--border);
+    gap: 0.4rem 1.2rem;
   }
-  .hc { font-size: 0.76rem; }
 
-  /* Meme decoupe qu'a l'impression : plus de grille deux colonnes, un flux. */
+  .stats li { padding: 0.55rem 0.75rem; }
+
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 0 1.25rem;
+  }
+
+  .profil { padding: 1.4rem 1.25rem 0; }
+
   .body {
-    display: block;
-    grid-template-columns: none;
+    grid-template-columns: minmax(0, 1fr);
+    border-top: none;
+    margin-top: 1.4rem;
   }
 
-  .sidebar {
-    display: block;
-    columns: 2;
-    column-gap: 1.1rem;
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-    padding: 1.1rem 1.25rem;
+  .main { padding: 0 1.25rem 1.5rem; }
+
+  .side {
+    border-left: none;
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 1.25rem;
   }
 
-  /* Les etiquettes de competences ont besoin de toute la largeur pour
-     s'aligner ; les listes courtes qui suivent tiennent sur deux colonnes.
-     Sans ca, le bandeau fait deux ecrans avant le moindre contenu de CV. */
-  .sidebar section:first-child { column-span: all; }
-
-  .sidebar section {
-    break-inside: avoid;
-    margin-bottom: 0.95rem;
-  }
-  .sidebar section:last-child { margin-bottom: 0; }
-
-  /* Les puces ::before sont positionnees en absolu : une rupture de colonne
-     les detache de leur ligne. Dans le bandeau, elles repassent en flux. */
-  .sidebar .soft-item { padding-left: 0; position: static; }
-  .sidebar .soft-item::before {
-    position: static;
-    display: inline;
-    margin-right: 0.35rem;
-  }
-  .sidebar .soft-item,
-  .sidebar .lang-row,
-  .sidebar .skill-group,
-  .sidebar .hobby-tags { break-inside: avoid; }
-
-  .st { margin-bottom: 0.6rem; padding-bottom: 0.35rem; }
-  .skill-group { margin-bottom: 0.6rem; }
-  .skill-tags { gap: 0.26rem; }
-  .stag { font-size: 0.72rem; padding: 0.15rem 0.45rem; }
-  .skill-group-label { margin-bottom: 0.35rem; }
-  .soft-list { gap: 0.3rem; }
-  .soft-item { font-size: 0.77rem; line-height: 1.35; }
-  .lang-row { margin-bottom: 0.3rem; }
-  .hobby-tags { gap: 0.26rem; }
-  .htag { font-size: 0.71rem; }
-  .dispo { font-size: 0.76rem; line-height: 1.5; }
-
-  .main {
-    display: block;
-    padding: 1.2rem 1.25rem 1.4rem;
-  }
-  .main section { margin-bottom: 1.5rem; }
-  .main section:last-child { margin-bottom: 0; }
-
-  .profil { font-size: 0.83rem; line-height: 1.75; }
-
-  .card-title { font-size: 0.87rem; }
-  .card-sub { font-size: 0.77rem; }
-  .card-desc { font-size: 0.8rem; }
-
-  /* Bouton d'appel : present, mais discret pour ne pas faire application. */
-  .actions { right: 0.85rem; bottom: 0.85rem; gap: 0.4rem; }
-  .action-fab {
-    padding: 0.5rem 0.7rem;
-    font-size: 0.74rem;
-    box-shadow: 0 4px 14px rgba(20, 35, 60, 0.22);
+  /* La date passe au-dessus de l'intitule : cote a cote, elle ecrase le
+     titre sur plusieurs lignes. */
+  .tl-head {
+    flex-direction: column-reverse;
+    gap: 0.05rem;
   }
 
+  /* Boutons : icones rondes, compactes mais toujours 48px de cible. */
+  .actions {
+    right: max(0.9rem, env(safe-area-inset-right));
+    bottom: max(0.9rem, env(safe-area-inset-bottom));
+  }
+  .fab {
+    width: 3rem;
+    height: 3rem;
+    min-height: 0;
+    padding: 0;
+  }
+  .fab span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .fab svg { width: 1.3rem; height: 1.3rem; }
+
+  /* Le panneau devient une feuille en bas d'ecran, facile au pouce. */
   .contact-panel {
-    right: 0.85rem;
-    bottom: 3.6rem;
-    width: min(300px, calc(100vw - 1.7rem));
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: calc(4.5rem + env(safe-area-inset-bottom));
+    width: auto;
   }
-}
-
-/* Petit telephone : le bandeau ne tient plus sur deux colonnes sans hacher
-   les intitules en mots isoles. */
-@media screen and (max-width: 440px) {
-  body { padding: 0.9rem 0.65rem 2.4rem; }
-
-  .sidebar { column-gap: 0.9rem; padding: 1rem 1.05rem; }
-
-  .header { padding: 1.3rem 1.1rem 1rem; }
-  .main { padding: 1.05rem 1.1rem 1.25rem; }
-
-  .name { font-size: 1.45rem; }
-
-  /* La date passe sous l'intitule du poste : cote a cote, elle ecrase le
-     titre sur deux ou trois lignes. */
-  .card-head {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.3rem;
-  }
-  .card-date { align-self: flex-start; }
+  .contact-panel a { padding: 0.85rem 0.9rem; font-size: 1rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .action-fab,
-  .contact-panel,
-  .contact-backdrop,
-  .contact-panel-list a {
-    transition: none !important;
-  }
-  .contact-panel-list a {
-    opacity: 1;
-    transform: none;
-  }
+  .fab, .contact-panel { transition: none !important; }
 }
 
+/* ------------------------------------------------------------------
+   Impression : une page A4, texte lisible (>= 9pt)
+   ------------------------------------------------------------------ */
 @media print {
-  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  @page { size: A4 portrait; margin: 9mm 10mm; }
 
-  @page { margin: 0.5cm 0.6cm; size: A4 portrait; }
-
-  html, body { background: #fff; }
-
-  /* Tout ce bloc est exprime en rem : changer la taille de reference met la
-     page entiere a l'echelle d'un seul reglage. Indispensable pour garder de
-     la marge — Firefox ne sait pas couper une grille CSS sur deux pages, il
-     la deplace entiere. Un depassement d'un pixel donne donc une page 1 vide
-     avec le seul en-tete, au lieu d'une coupure propre. */
-  html { font-size: 14px; }
+  html { font-size: 10pt; }
 
   body {
+    background: #fff;
     padding: 0;
-    margin: 0;
-    font-size: 10.5px;
+    font-size: 0.95rem;
     line-height: 1.4;
   }
 
-  /* overflow:hidden tronque tout ce qui depasse la premiere feuille. */
   .page {
-    box-shadow: none;
+    max-width: none;
     border-radius: 0;
-    max-width: 100%;
-    width: 100%;
+    box-shadow: none;
     overflow: visible;
   }
 
-  .actions,
-  .contact-backdrop,
-  .contact-panel { display: none !important; }
+  .actions, .contact-backdrop, .contact-panel { display: none !important; }
 
-  /* Mise en page identique a l'ecran : deux colonnes, barre laterale a
-     gauche. Elle ne tient que si le document reste sur UNE feuille — au-dela,
-     Chrome fragmente mal la grille et laisse de grands vides dans la colonne
-     etroite. Tout le reste de ce bloc sert donc a gagner de la hauteur sur
-     les espacements, sans reduire la taille du texte. */
+  /* Le QR se cale tout en bas de la colonne laterale, dans le coin vide.
+     Marge blanche de 2 modules autour : necessaire a la lecture. */
+  .qr-block {
+    display: block;
+    margin-top: auto;
+    padding-top: 0.8rem;
+    break-inside: avoid;
+    text-align: center;
+  }
+  svg.qr { padding: 0.35rem; margin: 0 auto; background: #fff; box-sizing: content-box; }
+
+  .header { padding: 0 0 0.9rem; }
+  .stats { padding: 0; }
+  .profil { padding: 1rem 0 0; }
+
   .body {
-    display: grid;
-    grid-template-columns: 192px 1fr;
+    margin-top: 1rem;
+    grid-template-columns: minmax(0, 1fr) 14.5rem;
   }
+  .main { padding: 1rem 1.4rem 0 0; gap: 1.1rem; }
+  .side { padding: 1rem 0 0 1.2rem; gap: 1rem; background: none; }
 
-  .sidebar { display: flex; columns: auto; }
-  .main { display: flex; }
+  .tl-item { padding-bottom: 0.75rem; break-inside: avoid; }
+  .project { break-inside: avoid; }
+  .project + .project { margin-top: 0.7rem; padding-top: 0.7rem; }
 
-  .header {
-    padding: 0.5rem 0.95rem 0.45rem;
-    gap: 0.75rem;
-  }
+  a { text-decoration: none; }
 
-  .avatar { width: 40px; height: 40px; font-size: 0.72rem; border-width: 1.5px; }
-  .header-identity { gap: 0.75rem; }
-
-  .name { font-size: 1.4rem; }
-  .headline { font-size: 0.63rem; margin-top: 0.22rem; letter-spacing: 0.09em; }
-  .headline-sub { font-size: 0.6rem; margin-top: 0.12rem; }
-  .hc { font-size: 0.64rem; gap: 0.28rem; }
-  .contacts { gap: 0.26rem; }
-
-  .sidebar {
-    padding: 0.65rem 0.8rem;
-    gap: 0.6rem;
-    margin-right: 0;
-  }
-
-  .main {
-    padding: 0.6rem 0.9rem;
-    gap: 0.48rem;
-  }
-
-  .st { font-size: 0.55rem; margin-bottom: 0.26rem; padding-bottom: 0.16rem; }
-
-  .stag { font-size: 0.62rem; padding: 0.08rem 0.32rem; }
-  .skill-group { margin-bottom: 0.38rem; }
-  .skill-group-label { font-size: 0.56rem; margin-bottom: 0.18rem; }
-  .skill-tags { gap: 0.18rem; }
-
-  .soft-list { gap: 0.18rem; }
-  .soft-item { font-size: 0.67rem; line-height: 1.25; padding-left: 0.8rem; }
-
-  .lang-row { font-size: 0.67rem; margin-bottom: 0.16rem; }
-  .lbadge { font-size: 0.56rem; padding: 0.05rem 0.32rem; }
-
-  .htag { font-size: 0.6rem; padding: 0.07rem 0.3rem; }
-  .hobby-tags { gap: 0.18rem; }
-
-  .dispo { font-size: 0.65rem; line-height: 1.38; }
-  .dispo strong { font-size: 0.67rem; margin-bottom: 0.04rem; }
-
-  .profil { font-size: 0.71rem; line-height: 1.36; }
-
-  .card { padding-bottom: 0.32rem; margin-bottom: 0.32rem; }
-  .card-head { margin-bottom: 0.06rem; gap: 0.5rem; }
-  .card-title { font-size: 0.75rem; line-height: 1.25; }
-  .card-date { font-size: 0.6rem; padding: 0.05rem 0.32rem; }
-  .card-sub { font-size: 0.64rem; margin-bottom: 0.14rem; }
-  .card-desc { font-size: 0.67rem; line-height: 1.3; }
-  .card-desc ul { gap: 0.08rem; }
-  .card-desc li { padding-left: 0.8rem; }
-
-  .tag { font-size: 0.57rem; padding: 0.05rem 0.26rem; }
-  .tags { margin-top: 0.16rem; gap: 0.12rem; }
-
-  a { color: inherit; text-decoration: none; }
+  /* Lettres trop espacees = mots coupes a l'extraction du texte
+     (« PARCO U RS ») : les logiciels de tri ne reconnaissent plus les
+     titres de section. On resserre a l'impression. */
+  .st, .sk-label, .qr-label { letter-spacing: 0.04em; }
 }

@@ -39,6 +39,10 @@ body {
   padding: 2.5rem 1rem 5rem;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
+  /* Pas de ligatures (fi, fl...) : dans le PDF, « fidélité » deviendrait
+     un caractere special que les logiciels de tri ne reconnaissent pas. */
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "clig" 0;
 }
 
 ul, ol { list-style: none; }
@@ -236,50 +240,36 @@ svg {
    Frise chronologique
    ------------------------------------------------------------------ */
 .timeline {
-  position: relative;
-  padding-left: 1.35rem;
-}
-/* Ligne verticale */
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 0.32rem;
-  top: 0.5rem;
-  bottom: 0.5rem;
-  width: 2px;
-  background: var(--accent-border);
+  /* Aucun element positionne (position: relative/absolute) dans la frise :
+     Chrome ecrit le texte positionne a part dans le PDF, ce qui le separe
+     de ses titres pour les logiciels de tri (ATS). Ligne, points et icones
+     sont donc dessines en arriere-plan. La marge negative laisse la place
+     a l'icone de diplome sans decaler le texte. */
+  margin-left: -0.3rem;
+  background: linear-gradient(var(--accent-border), var(--accent-border)) no-repeat;
+  background-position: 0.62rem 0.5rem;
+  background-size: 2px calc(100% - 1rem);
 }
 
 .tl-item {
-  position: relative;
+  padding-left: 1.65rem;
   padding-bottom: 1rem;
+  /* Point plein (avec anneau blanc qui coupe la ligne) */
+  background: radial-gradient(circle at 0.65rem 0.73rem,
+      var(--accent) 0.35rem,
+      var(--surface) calc(0.35rem + 0.5px),
+      var(--surface) calc(0.35rem + 3px),
+      transparent calc(0.35rem + 3.5px)) no-repeat;
 }
 .tl-item:last-child { padding-bottom: 0; }
 
-/* Point plein pour l'experience ; icone de diplome pour la formation
-   (comprehensible sans legende). */
-.tl-item::before {
-  content: '';
-  position: absolute;
-  left: -1.35rem;
-  top: 0.38rem;
-  width: 0.7rem;
-  height: 0.7rem;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 3px var(--surface);
-}
-.tl-edu::before {
-  /* Centree sur le meme axe que les points pleins */
-  left: -1.6rem;
-  top: 0.15rem;
-  width: 1.2rem;
-  height: 1.2rem;
+/* Formation : icone de diplome sur un disque blanc, meme axe que les points */
+.tl-edu {
   background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d4fc4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z'/%3E%3Cpath d='M22 10v6'/%3E%3Cpath d='M6 12.5V16a6 3 0 0 0 12 0v-3.5'/%3E%3C/svg%3E")
-    center / 1.05rem no-repeat,
-    var(--surface);
-  box-shadow: 0 0 0 2px var(--surface);
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d4fc4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z'/%3E%3Cpath d='M22 10v6'/%3E%3Cpath d='M6 12.5V16a6 3 0 0 0 12 0v-3.5'/%3E%3C/svg%3E") no-repeat 0.125rem 0.225rem / 1.05rem 1.05rem,
+    radial-gradient(circle at 0.65rem 0.75rem,
+      var(--surface) 0.68rem,
+      transparent calc(0.68rem + 0.5px)) no-repeat;
 }
 
 .tl-head {
@@ -317,15 +307,14 @@ svg {
   line-height: 1.5;
 }
 .tl-desc li {
-  position: relative;
-  padding-left: 0.9rem;
+  display: flex;
+  gap: 0.58rem;
 }
 .tl-desc li + li { margin-top: 0.15rem; }
 .tl-desc li::before {
   content: '';
-  position: absolute;
-  left: 0;
-  top: 0.6em;
+  flex-shrink: 0;
+  margin-top: 0.6em;
   width: 0.32rem;
   height: 0.32rem;
   border-radius: 50%;

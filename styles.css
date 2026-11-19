@@ -61,6 +61,35 @@ svg {
 }
 
 /* ------------------------------------------------------------------
+   Selecteur de version (dev web / graphisme) — ecran uniquement
+   ------------------------------------------------------------------ */
+.cv-switch {
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+  width: fit-content;
+  margin: 0 auto 1rem;
+  padding: 0.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: 0 1px 3px rgba(20, 35, 60, 0.08);
+}
+.cv-switch a {
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-2);
+  text-decoration: none;
+}
+.cv-switch a:hover { color: var(--accent); }
+.cv-switch a[aria-current="page"] {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ------------------------------------------------------------------
    Feuille
    ------------------------------------------------------------------ */
 .page {
@@ -247,29 +276,35 @@ svg {
      a l'icone de diplome sans decaler le texte. */
   margin-left: -0.3rem;
   background: linear-gradient(var(--accent-border), var(--accent-border)) no-repeat;
-  background-position: 0.62rem 0.5rem;
+  background-position: 0.82rem 0.5rem;
   background-size: 2px calc(100% - 1rem);
 }
 
 .tl-item {
-  padding-left: 1.65rem;
+  padding-left: 1.85rem;
   padding-bottom: 1rem;
-  /* Point plein (avec anneau blanc qui coupe la ligne) */
-  background: radial-gradient(circle at 0.65rem 0.73rem,
-      var(--accent) 0.35rem,
-      var(--surface) calc(0.35rem + 0.5px),
-      var(--surface) calc(0.35rem + 3px),
-      transparent calc(0.35rem + 3.5px)) no-repeat;
+}
+/* Point plein dessine en pseudo-element flottant (ni position:absolute,
+   ni degrade) : rendu identique dans tous les lecteurs PDF. */
+.tl-item::before {
+  content: '';
+  float: left;
+  width: 0.7rem;
+  height: 0.7rem;
+  margin: 0.38rem 0 0 -1.35rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--surface);
 }
 .tl-item:last-child { padding-bottom: 0; }
 
 /* Formation : icone de diplome sur un disque blanc, meme axe que les points */
-.tl-edu {
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d4fc4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z'/%3E%3Cpath d='M22 10v6'/%3E%3Cpath d='M6 12.5V16a6 3 0 0 0 12 0v-3.5'/%3E%3C/svg%3E") no-repeat 0.125rem 0.225rem / 1.05rem 1.05rem,
-    radial-gradient(circle at 0.65rem 0.75rem,
-      var(--surface) 0.68rem,
-      transparent calc(0.68rem + 0.5px)) no-repeat;
+.tl-edu::before {
+  width: 1.36rem;
+  height: 1.36rem;
+  margin: 0.07rem 0 0 -1.68rem;
+  box-shadow: none;
+  background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d4fc4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z'/%3E%3Cpath d='M22 10v6'/%3E%3Cpath d='M6 12.5V16a6 3 0 0 0 12 0v-3.5'/%3E%3C/svg%3E") no-repeat center / 1.05rem 1.05rem;
 }
 
 .tl-head {
@@ -641,7 +676,7 @@ svg.qr {
     overflow: visible;
   }
 
-  .actions, .contact-backdrop, .contact-panel { display: none !important; }
+  .actions, .contact-backdrop, .contact-panel, .cv-switch { display: none !important; }
 
   /* Le QR se cale tout en bas de la colonne laterale, dans le coin vide.
      Texte a cote du code (et non dessous) pour tenir dans la hauteur ;

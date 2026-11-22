@@ -61,35 +61,6 @@ svg {
 }
 
 /* ------------------------------------------------------------------
-   Selecteur de version (dev web / graphisme) — ecran uniquement
-   ------------------------------------------------------------------ */
-.cv-switch {
-  display: flex;
-  justify-content: center;
-  gap: 0.25rem;
-  width: fit-content;
-  margin: 0 auto 1rem;
-  padding: 0.25rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  box-shadow: 0 1px 3px rgba(20, 35, 60, 0.08);
-}
-.cv-switch a {
-  padding: 0.35rem 1rem;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-2);
-  text-decoration: none;
-}
-.cv-switch a:hover { color: var(--accent); }
-.cv-switch a[aria-current="page"] {
-  background: var(--accent);
-  color: #fff;
-}
-
-/* ------------------------------------------------------------------
    Feuille
    ------------------------------------------------------------------ */
 .page {
@@ -676,7 +647,7 @@ svg.qr {
     overflow: visible;
   }
 
-  .actions, .contact-backdrop, .contact-panel, .cv-switch { display: none !important; }
+  .actions, .contact-backdrop, .contact-panel { display: none !important; }
 
   /* Le QR se cale tout en bas de la colonne laterale, dans le coin vide.
      Texte a cote du code (et non dessous) pour tenir dans la hauteur ;

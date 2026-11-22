@@ -726,3 +726,8 @@ svg.qr {
      titres de section. On resserre a l'impression. */
   .st, .sk-label, .qr-label { letter-spacing: 0.04em; }
 }
+
+/* Monogramme dessine en traces vectoriels (pas de texte) : les logiciels
+   de tri (ATS) lisent directement le nom. */
+.identity .avatar { order: -1; }
+.avatar .mono { width: 1.45rem; height: auto; display: block; }

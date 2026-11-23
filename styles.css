@@ -702,3 +702,7 @@ svg.qr {
    de tri (ATS) lisent directement le nom. */
 .identity .avatar { order: -1; }
 .avatar .mono { width: 1.45rem; height: auto; display: block; }
+
+/* Monogramme illustre (traces vectoriels, aucun texte) */
+.avatar-badge { background: none; border-radius: 0; width: 4.9rem; height: 4.9rem; }
+.avatar-badge .mono-badge { width: 100%; height: 100%; display: block; stroke: none; stroke-width: 0; }
